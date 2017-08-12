@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title></title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/header/header.css">
+	<title>头部页面</title>
+</head>
+<body>
+<nav>模仿小米手机计算器写的网页版计算器</nav>
+</body>
+</html>;
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+<link href='http://cdn.webfont.youziku.com/webfonts/nomal/106338/39490/598c06ecf629d80594bb9acd.css' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="../css/main/main.css">
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+	<title></title>
+</head>
+<body>
+<main id="main">
+	<div class="calculator">
+		<input type="text" name="" class="calculator-displayer" disabled="disabled" v-model="displayer" maxlength="26">
+		<div class="buttons">
+			<div class="btn-row">
+				<button class="btn-clear" @click="clearDisplayer()">{{ clear }}</button>
+				<button class="btn-back" @click="goBack()">{{ back }}</button>
+				<button class="btn-divide" @click="toDivide(operator.divide)">{{ operator.divide }}</button>
+				<button class="btn-multiply" @click="toMultiply()">{{ operator.multiply }}</button>
+			</div>
+			<div class="btn-row">
+				<button class="btn-number" @click="getNumber(number.seven)">{{ number.seven }}</button>
+				<button class="btn-number" @click="getNumber(number.eight)">{{ number.eight }}</button>
+				<button class="btn-number" @click="getNumber(number.nine)">{{ number.nine }}</button>
+				<button class="btn-number" @click="getNumber(operator.minus)">{{ operator.minus }}</button>
+			</div>
+			<div class="btn-row">
+				<button class="btn-number" @click="getNumber(number.four)">{{ number.four }}</button>
+				<button class="btn-number" @click="getNumber(number.five)">{{ number.five }}</button>
+				<button class="btn-number" @click="getNumber(number.six)">{{ number.six }}</button>
+				<button class="btn-number" @click="getNumber(operator.plus)">{{ operator.plus }}</button>
+			</div>
+			<div class="btn-row">
+				<button class="btn-number" @click="getNumber(number.three)">{{ number.three }}</button>
+				<button class="btn-number" @click="getNumber(number.two)">{{ number.two }}</button>
+				<button class="btn-number" @click="getNumber(number.one)">{{ number.one }}</button>
+			</div>
+			<div class="btn-row">
+				<button class="btn-remainder" @click="getRemainder()">{{ operator.remainder }}</button>
+				<button class="btn-number" @click="getNumber(number.zero)">{{ number.zero }}</button>
+				<button class="btn-point" @click="setPoint()">{{ operator.point }}</button>
+				<button class="btn-equal" @click="toEqual($event)">{{ equal }}</button>
+			</div>
+		</div>
+	</div>
+	<div class="bind-data">
+		<div class="big-displayer-wrapper">
+			<input type="text" class="big-displayer" :class="displayerStyle" v-model="displayer" disabled="disabled">
+		</div>
+	</div>
+</main>
+</body>
+</html>
+<script type="text/javascript" src="../js/main/main.js"></script>
+;
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/footer/footer.css">
+	<title>底部</title>
+</head>
+<body>
+<footer>
+	<cite>
+		作者:何俊洁
+	</cite>
+</footer>
+</body>
+</html>;
+</body>
+</html>

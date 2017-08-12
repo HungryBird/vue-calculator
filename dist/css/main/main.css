@@ -1,0 +1,88 @@
+.calculator {
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  -webkit-transform: translate(-20%, -50%);
+  -ms-transform: translate(-20%, -50%);
+  transform: translate(-20%, -50%);
+  width: 350px;
+  height: 450px;
+  padding: 40px 20px;
+  border: 2px solid #780E17;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 3px 0 4px rgba(120, 14, 23, 0.9), 0 3px 4px rgba(120, 14, 23, 0.9), -3px 0 4px rgba(120, 14, 23, 0.9), 0 -3px 4px rgba(120, 14, 23, 0.9);
+  box-shadow: 3px 0 4px rgba(120, 14, 23, 0.9), 0 3px 4px rgba(120, 14, 23, 0.9), -3px 0 4px rgba(120, 14, 23, 0.9), 0 -3px 4px rgba(120, 14, 23, 0.9);
+  background-color: #B32531; }
+  .calculator .calculator-displayer {
+    width: 100%;
+    height: 40px;
+    margin: 0 0 20px;
+    padding: 0 10px;
+    border: 2px solid #780E17;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: right;
+    font-family: "PocketCalculatoc7024520a19f62";
+    font-size: 24px; }
+  .calculator .buttons {
+    border: 2px solid #780E17;
+    border-radius: 4px;
+    overflow: hidden; }
+    .calculator .buttons .btn-row {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+      .calculator .buttons .btn-row button {
+        font-size: 24px;
+        font-family: "PocketCalculatoc7024520a19f62";
+        outline: none;
+        width: 25%;
+        height: 60px;
+        font-weight: 300;
+        border: thin solid #B32531;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        cursor: pointer; }
+        .calculator .buttons .btn-row button:hover {
+          font-size: 200%;
+          color: #B32531; }
+      .calculator .buttons .btn-row .btn-equal {
+        background-color: orange;
+        height: 120px;
+        margin-top: -60px; }
+
+.bind-data {
+  position: absolute;
+  right: 20%;
+  top: 50%;
+  -webkit-transform: translate(20%, -50%);
+  -ms-transform: translate(20%, -50%);
+  transform: translate(20%, -50%);
+  width: 450px;
+  height: 450px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; }
+  .bind-data .big-displayer-wrapper {
+    position: relative; }
+    .bind-data .big-displayer-wrapper .big-displayer {
+      width: 100%;
+      height: auto;
+      padding: 0 10px;
+      background-color: #fff;
+      font-weight: 300;
+      border: none;
+      text-align: right;
+      font-family: "PocketCalculatoc7024520a19f62"; }
+    .bind-data .big-displayer-wrapper .shortLength {
+      font-size: 64px; }
+    .bind-data .big-displayer-wrapper .midLength {
+      font-size: 48px; }
+    .bind-data .big-displayer-wrapper .longLength {
+      font-size: 36px; }
