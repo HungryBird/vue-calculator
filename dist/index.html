@@ -35,20 +35,20 @@
 			<div class="btn-row">
 				<button class="btn-clear" @click="clearDisplayer()">{{ clear }}</button>
 				<button class="btn-back" @click="goBack()">{{ back }}</button>
-				<button class="btn-divide" @click="toDivide(operator.divide)">{{ operator.divide }}</button>
-				<button class="btn-multiply" @click="toMultiply()">{{ operator.multiply }}</button>
+				<button class="btn-divide" @click="toOperator(operator.divide)">{{ operator.divide }}</button>
+				<button class="btn-multiply" @click="toOperator(operator.multiply)">{{ operator.multiply }}</button>
 			</div>
 			<div class="btn-row">
 				<button class="btn-number" @click="getNumber(number.seven)">{{ number.seven }}</button>
 				<button class="btn-number" @click="getNumber(number.eight)">{{ number.eight }}</button>
 				<button class="btn-number" @click="getNumber(number.nine)">{{ number.nine }}</button>
-				<button class="btn-number" @click="getNumber(operator.minus)">{{ operator.minus }}</button>
+				<button class="btn-number" @click="toOperator(operator.minus)">{{ operator.minus }}</button>
 			</div>
 			<div class="btn-row">
 				<button class="btn-number" @click="getNumber(number.four)">{{ number.four }}</button>
 				<button class="btn-number" @click="getNumber(number.five)">{{ number.five }}</button>
 				<button class="btn-number" @click="getNumber(number.six)">{{ number.six }}</button>
-				<button class="btn-number" @click="getNumber(operator.plus)">{{ operator.plus }}</button>
+				<button class="btn-number" @click="toOperator(operator.plus)">{{ operator.plus }}</button>
 			</div>
 			<div class="btn-row">
 				<button class="btn-number" @click="getNumber(number.three)">{{ number.three }}</button>
@@ -56,10 +56,10 @@
 				<button class="btn-number" @click="getNumber(number.one)">{{ number.one }}</button>
 			</div>
 			<div class="btn-row">
-				<button class="btn-remainder" @click="getRemainder()">{{ operator.remainder }}</button>
+				<button class="btn-remainder" @click="toOperator()">{{ operator.remainder }}</button>
 				<button class="btn-number" @click="getNumber(number.zero)">{{ number.zero }}</button>
-				<button class="btn-point" @click="setPoint()">{{ operator.point }}</button>
-				<button class="btn-equal" @click="toEqual($event)">{{ equal }}</button>
+				<button class="btn-point" @click="setPoint(operator.point)">{{ operator.point }}</button>
+				<button class="btn-equal" @click="toEqual()">{{ equal }}</button>
 			</div>
 		</div>
 	</div>

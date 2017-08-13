@@ -3,7 +3,7 @@
 var btnText = {
 	operator: {
 		divide: '÷',
-		multiply: '*',
+		multiply: '×',
 		minus: '-',
 		plus: '+',
 		remainder: '%',
@@ -19,11 +19,12 @@ var btnText = {
 		seven: '7',
 		eight: '8',
 		nine: '9',
-		zero: '10'
+		zero: '0'
 	},
 	clear: 'C',
 	back: '<-',
 	equal: '=',
+	finished: false,
 	displayer: '0',
 	displayerStyle: {
 		shortLength: true,
@@ -33,50 +34,74 @@ var btnText = {
 },
     storeOpr = '',
     storeExpression = [];
-/*storeNumber.length === 0 ? storeNumber[0] = '0' || storeNumber;*/
+
 
 new Vue({
 	el: '#main',
 	data: btnText,
 	methods: {
 		clearDisplayer: function clearDisplayer() {
-			storeNumber.length = 0;
 			storeOpr = '';
 			storeExpression.length = 0;
-			this.displayer = 0;
+			this.displayer = '0';
 		},
-		goBack: function goBack() {
-			if (storeExpression.length === 0) {
-				this.displayer = 0;
-				return;
-			}
-			storeExpression.splice(storeExpression.length - 1, 1);
-			this.displayer = storeExpression[storeExpression.length - 1].join('');
-		},
-		toDivide: function toDivide(opr) {
-			if (typeof Number.parseInt(storeExpression[storeExpression.length - 1]) === 'number') {
+		goBack: function goBack() {},
+		toOperator: function toOperator(opr) {
+			this.finished = false;
+			if (!Number.isNaN(Number.parseInt(this.displayer))) {
 				storeExpression.push(this.displayer);
+			}
+			this.displayer = opr;
+			switch (opr) {
+				case '×':
+					opr = '*';
+					break;
+				case '÷':
+					opr = '/';
 			}
 			storeOpr = opr;
-			this.displayer = storeOpr;
 		},
 		getNumber: function getNumber(num) {
-			if (this.displayer.length < 26 && this.displayer !== storeOpr) {
-				this.displayer === '0' ? this.displayer = num : this.displayer += num;
-			} else if (this.displayer === storeOpr) {
-				storeExpression.push(this.displayer);
+			if (this.finished) {
+				this.finished = false;
+				storeExpression.length = 0;
+				this.displayer = '0';
+			}
+			if (!Number.isNaN(Number.parseInt(this.displayer))) {
+				if (this.displayer.length < 26) {
+					this.displayer === '0' ? this.displayer = num : this.displayer += num;
+				}
+			} else if (Number.isNaN(Number.parseInt(this.displayer))) {
+				storeExpression.push(storeOpr);
 				this.displayer = num;
 			}
 		},
-		toEqual: function toEqual(n) {
-			/*if(typeof storeExpression[storeExpression.length - 1] === 'string') {
-   	storeExpression.pop();
-   }*/
-			console.log(storeExpression);
-			//this.displayer = eval(storeExpression.join(''));
+		setPoint: function setPoint(p) {
+			if (this.displayer.length >= 26) {
+				return;
+			}
+			for (var i = 0; i < this.displayer.length; i++) {
+				if (this.displayer.charAt(i) === p) {
+					return;
+				}
+			}
+			this.displayer += p;
+		},
+		toEqual: function toEqual() {
+			if (this.finished) {
+				return;
+			}
+			if (!Number.isNaN(Number.parseInt(this.displayer))) {
+				storeExpression.push(this.displayer);
+				this.displayer = eval(storeExpression.join('')).toString();
+				this.finished = true;
+			} else {
+				this.displayer = eval(storeExpression.join('')).toString();
+				this.finished = true;
+			}
 		}
 	},
-	watch: {
+	watch: { //监听右边大显示器字符串长度
 		displayer: function displayer(val, oldval) {
 			if (val.length < 11) {
 				this.displayerStyle.shortLength = true;
