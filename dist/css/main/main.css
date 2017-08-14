@@ -66,11 +66,27 @@
   transform: translate(20%, -50%);
   width: 450px;
   height: 450px;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s; }
+  overflow: hidden; }
   .bind-data .big-displayer-wrapper {
-    position: relative; }
+    position: absolute;
+    bottom: 0;
+    padding: 100px 0;
+    width: 100%; }
+    .bind-data .big-displayer-wrapper li {
+      font-size: 24px;
+      color: #333;
+      list-style: none;
+      text-align: right;
+      font-family: "PocketCalculatoc7024520a19f62"; }
+    .bind-data .big-displayer-wrapper .list-enter-active, .bind-data .big-displayer-wrapper .list-leave-active {
+      -webkit-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s; }
+    .bind-data .big-displayer-wrapper .list-enter, .bind-data .big-displayer-wrapper .list-leave-to {
+      opacity: 0;
+      -webkit-transform: translateY(30px);
+      -ms-transform: translateY(30px);
+      transform: translateY(30px); }
     .bind-data .big-displayer-wrapper .big-displayer {
       width: 100%;
       height: auto;

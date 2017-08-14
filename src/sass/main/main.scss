@@ -61,9 +61,27 @@
 	transform: translate(20%, -50%);
 	width: 450px;
 	height: 450px;
-	transition: all 0.5s;
+	overflow: hidden;
 	.big-displayer-wrapper{
-		position: relative;
+		position: absolute;
+		bottom: 0;
+		padding: 100px 0;
+		width: 100%;
+		li{
+			font-size: 24px;
+			color: #333;
+			list-style: none;
+			text-align: right;
+			font-family: $displayerFontFamily;
+		}
+		.list-enter-active, .list-leave-active {
+		   transition: all 0.5s;
+		}
+		.list-enter, .list-leave-to
+		{
+		   opacity: 0;
+		   transform: translateY(30px);
+		}
 		.big-displayer{
 			width: 100%;
 			height: auto;

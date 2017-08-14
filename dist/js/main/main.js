@@ -30,26 +30,38 @@ var btnText = {
 		shortLength: true,
 		midLength: false,
 		longLength: false
-	}
-},
-    storeOpr = '',
-    storeExpression = [];
-
+	},
+	storeExpression: [],
+	storeOpr: '',
+	expressions: []
+};
 
 new Vue({
 	el: '#main',
 	data: btnText,
 	methods: {
 		clearDisplayer: function clearDisplayer() {
-			storeOpr = '';
-			storeExpression.length = 0;
+			this.storeOpr = '';
+			this.storeExpression.length = 0;
 			this.displayer = '0';
+			this.expressions.length = 0;
 		},
-		goBack: function goBack() {},
+		goBack: function goBack() {
+			if (this.displayer.length > 1) {
+				this.displayer = this.displayer.substring(0, this.displayer.length - 1);
+			} else if (this.storeExpression.length !== 0) {
+				this.displayer = this.storeExpression[storeExpression.length - 1];
+				this.storeExpression.pop();
+			} else {
+				this.displayer = '0';
+			}
+		},
 		toOperator: function toOperator(opr) {
 			this.finished = false;
 			if (!Number.isNaN(Number.parseInt(this.displayer))) {
-				storeExpression.push(this.displayer);
+				this.storeExpression.push(this.displayer);
+				this.expressions.push({ name: this.displayer });
+				console.log(this.expressions);
 			}
 			this.displayer = opr;
 			switch (opr) {
@@ -59,20 +71,21 @@ new Vue({
 				case '÷':
 					opr = '/';
 			}
-			storeOpr = opr;
+			this.storeOpr = opr;
 		},
 		getNumber: function getNumber(num) {
 			if (this.finished) {
 				this.finished = false;
-				storeExpression.length = 0;
 				this.displayer = '0';
+				this.expressions.length = 0;
 			}
 			if (!Number.isNaN(Number.parseInt(this.displayer))) {
 				if (this.displayer.length < 26) {
 					this.displayer === '0' ? this.displayer = num : this.displayer += num;
 				}
 			} else if (Number.isNaN(Number.parseInt(this.displayer))) {
-				storeExpression.push(storeOpr);
+				this.storeExpression.push(this.storeOpr);
+				this.expressions.push({ name: this.storeOpr });
 				this.displayer = num;
 			}
 		},
@@ -92,17 +105,27 @@ new Vue({
 				return;
 			}
 			if (!Number.isNaN(Number.parseInt(this.displayer))) {
-				storeExpression.push(this.displayer);
-				this.displayer = eval(storeExpression.join('')).toString();
+				this.storeExpression.push(this.displayer);
+				this.expressions.push({ name: this.displayer });
+				this.displayer = eval(this.storeExpression.join('')).toString();
+				this.storeExpression.length = 0;
 				this.finished = true;
 			} else {
-				this.displayer = eval(storeExpression.join('')).toString();
+				this.displayer = eval(this.storeExpression.join('')).toString();
+				this.storeExpression.length = 0;
 				this.finished = true;
 			}
 		}
 	},
 	watch: { //监听右边大显示器字符串长度
 		displayer: function displayer(val, oldval) {
+			switch (val) {
+				case '*':
+					this.displayer = '×';
+					break;
+				case '/':
+					this.displayer = '÷';
+			}
 			if (val.length < 11) {
 				this.displayerStyle.shortLength = true;
 				this.displayerStyle.midLength = false;
